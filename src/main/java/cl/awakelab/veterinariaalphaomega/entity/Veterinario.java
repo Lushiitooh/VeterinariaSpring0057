@@ -29,9 +29,10 @@ public class Veterinario {
     @Column (nullable = false,length = 50)
     private String especialidad;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "FK_Usuario", nullable = false)
     private Usuario usuario;
+//TODO muchos veterinarios pueden atender muchas mascotas
 
 
 }

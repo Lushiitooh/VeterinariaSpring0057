@@ -23,5 +23,7 @@ public class Usuario {
     @Column(length = 30)
     private String contrasena;
 
+    //OnetoOne mappedby a propietario
+
 
 }

@@ -5,11 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name ="Propietarios")
+@Table(name ="propietarios")
 public class Propietario {
 
     @Id
@@ -28,9 +31,17 @@ public class Propietario {
     @Column(length = 50)
     private String correoElectronico;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "FK_Usuario", nullable = false)
-    private Usuario idUsuario;
+    private Usuario usuario;
+    //todo averiguar como funciona One to One
+
+    @OneToMany(mappedBy = "propietarioMascota", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Mascota> listaMascotas = new ArrayList<>();
 
 
-}
+    }
+
+
+
+
