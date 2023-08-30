@@ -1,20 +1,31 @@
 package cl.awakelab.veterinariaalphaomega.service.serviceimpl;
 
 import cl.awakelab.veterinariaalphaomega.entity.Mascota;
+import cl.awakelab.veterinariaalphaomega.repository.IMascotaRepository;
 import cl.awakelab.veterinariaalphaomega.service.IMascotaService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 @Service("mascotaServiceImpl")
 public class MascotaServiceImpl implements IMascotaService {
+
+    @Autowired
+    private IMascotaRepository mascotaRepository;
+
     @Override
     public List<Mascota> listarMascota() {
-        return null;
+        return mascotaRepository.findAll();
+    }
+
+    @Override
+    public Mascota listarMascotaPorId(Integer id) {
+        return mascotaRepository.findById(id).orElse(null);
     }
 
     @Override
     public Mascota crearMascota(Mascota mascota) {
-        return null;
+        return mascotaRepository.save(mascota);
     }
 
     @Override
@@ -24,6 +35,6 @@ public class MascotaServiceImpl implements IMascotaService {
 
     @Override
     public void eliminarMascota(int idMascota) {
-
+        mascotaRepository.deleteById(idMascota);
     }
 }

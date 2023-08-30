@@ -20,6 +20,12 @@ public class UsuarioController {
     @Autowired
     private IUsuarioService usuarioService;
 
+    /* Estructura del JSON
+    *   {
+    "       nombre_usuario": "",
+    "       contrasena": ""
+        }
+    * */
     @RequestMapping(value = "/usuario", method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody Usuario usuario, BindingResult result) {
         Usuario nuevoUsuario = null;
@@ -42,7 +48,7 @@ public class UsuarioController {
             response.put("Error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
             return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        response.put("message", "Cliente creado con exito");
+        response.put("message", "Usuario creado con exito");
         response.put("usuario", nuevoUsuario);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
