@@ -32,7 +32,7 @@ public class Mascota {
     private String color;
 
     @ManyToOne(optional = false,cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    //@JoinColumn(name = "propietario", referencedColumnName = "id")
+    @JoinColumn(name = "propietario_id", referencedColumnName = "id")
     private Propietario propietarioMascota;
 
 

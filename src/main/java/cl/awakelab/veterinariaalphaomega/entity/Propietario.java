@@ -36,7 +36,7 @@ public class Propietario {
     private Usuario usuario;
     //todo averiguar como funciona One to One
 
-    @OneToMany(mappedBy = "propietarios", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "propietarioMascota", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Mascota> listaMascotas = new ArrayList<>();
 
 
