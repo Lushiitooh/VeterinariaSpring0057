@@ -2,9 +2,10 @@ package cl.awakelab.veterinariaalphaomega.service.serviceimpl;
 
 import cl.awakelab.veterinariaalphaomega.entity.Mascota;
 import cl.awakelab.veterinariaalphaomega.service.IMascotaService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service("mascotaServiceImpl")
 public class MascotaServiceImpl implements IMascotaService {
     @Override
     public List<Mascota> listarMascota() {
@@ -12,12 +13,12 @@ public class MascotaServiceImpl implements IMascotaService {
     }
 
     @Override
-    public Mascota crearMascota(Mascota alumno) {
+    public Mascota crearMascota(Mascota mascota) {
         return null;
     }
 
     @Override
-    public Mascota actualizarMascota(Mascota alumno) {
+    public Mascota actualizarMascota(Mascota mascota) {
         return null;
     }
 
