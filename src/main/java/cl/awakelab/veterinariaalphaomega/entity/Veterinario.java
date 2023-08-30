@@ -29,11 +29,8 @@ public class Veterinario {
     @Column (nullable = false,length = 50)
     private String especialidad;
 
-    @Column(name = "usuarioId", unique = true, nullable = false)
-    private int usuarioId;
-
     @ManyToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "FK, Usuario", nullable = false)
+    @JoinColumn(name = "FK_Usuario", nullable = false)
     private Usuario usuario;
 
 
