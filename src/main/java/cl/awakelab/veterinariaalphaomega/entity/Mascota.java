@@ -32,6 +32,8 @@ public class Mascota {
     private String color;
 
     @ManyToOne(optional = false,cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "FK_Propietario",nullable = false)
+    //@JoinColumn(name = "propietario", referencedColumnName = "id")
     private Propietario propietarioMascota;
+
+
 }
