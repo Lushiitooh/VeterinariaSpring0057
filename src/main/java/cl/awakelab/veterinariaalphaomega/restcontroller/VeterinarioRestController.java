@@ -1,4 +1,4 @@
 package cl.awakelab.veterinariaalphaomega.restcontroller;
 
-public class Inutilrestcontr {
+public class VeterinarioRestController {
 }
