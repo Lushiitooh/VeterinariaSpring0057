@@ -12,9 +12,10 @@ import java.util.List;
 public class UsuarioServiceImpl implements IUsuarioService {
     @Autowired
     IUsuarioRepository objUsuarioRepo;
+    private IUsuarioRepository usuarioRepository;
     @Override
     public Usuario crearUsuario(Usuario nuevoUsuario) {
-        return null;
+        return usuarioRepository.save(nuevoUsuario);
     }
     @Override
     public Usuario actualizarUsuario(int id) {
@@ -23,15 +24,21 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
     @Override
     public List<Usuario> listarUsuarios() {
-        return null;
+        return usuarioRepository.findAll();
     }
 
     @Override
     public void eliminarUsuario(int id) {
+        usuarioRepository.deleteById(id);
     }
 
     @Override
     public Usuario listarUsuarioId(int id) {
         return null;
+    }
+
+    @Override
+    public Usuario buscarUsuarioPorId(Integer id) {
+        return usuarioRepository.findById(id).orElse(null);
     }
 }

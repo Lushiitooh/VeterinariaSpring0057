@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface IMascotaService {
     public List<Mascota> listarMascota();
+    public Mascota listarMascotaPorId(Integer id);
     public Mascota crearMascota(Mascota mascota);
     public Mascota actualizarMascota(Mascota mascota);
     public void eliminarMascota(int idMascota);

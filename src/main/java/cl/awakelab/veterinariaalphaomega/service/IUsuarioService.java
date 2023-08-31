@@ -8,6 +8,7 @@ public interface IUsuarioService {
     public Usuario crearUsuario(Usuario nuevoUsuario);
     public Usuario actualizarUsuario(int id);
     public List<Usuario> listarUsuarios();
+    public Usuario buscarUsuarioPorId(Integer id);
     public void eliminarUsuario(int id);
     public Usuario listarUsuarioId(int id);
 }

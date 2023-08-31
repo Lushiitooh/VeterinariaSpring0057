@@ -23,7 +23,9 @@ public class Usuario {
     @Column(length = 30)
     private String contrasena;
 
-    //OnetoOne mappedby a propietario
+    @OneToOne( mappedBy = "usuario",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Usuario usuarioVeterinario = new Usuario();
+
 
 
 }
