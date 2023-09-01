@@ -28,4 +28,14 @@ public class VeterinarioServiceImpl implements IVeterinarioService {
     public void eliminarVeterinario(int idVeterinario) {
 
     }
+
+    @Override
+    public Veterinario listarVeterinarioId(int id) {
+        return null;
+    }
+
+    @Override
+    public Veterinario buscarVeterinarioPorId(Integer id) {
+        return null;
+    }
 }
