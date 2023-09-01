@@ -28,7 +28,7 @@ public class MascotaRestController {
         return objMascotaService.listarMascotaPorId(id);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public Mascota actualizarMascota(@RequestBody Mascota mascota, @PathVariable int id){
         Mascota mascotaActual = objMascotaService.listarMascotaPorId(id);
         Mascota mascotaNueva = null;
@@ -41,8 +41,8 @@ public class MascotaRestController {
         mascotaNueva = objMascotaService.crearMascota(mascotaActual);
         return mascotaNueva;
     }
-    @DeleteMapping
-    public void eliminarMascota(@RequestBody int idMascota){
+    @DeleteMapping("/{idMascota}")
+    public void eliminarMascota(@PathVariable int idMascota){
         objMascotaService.eliminarMascota(idMascota);
     }
 

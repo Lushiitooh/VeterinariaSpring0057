@@ -30,12 +30,12 @@ public class VeterinarioRestController {
         return objVeterinarioService.listarVeterinarioId(id);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{idVeterinario}")
     public void eliminarVeterinario (@RequestBody int idVeterinario){
         objVeterinarioService.eliminarVeterinario(idVeterinario);
     }
 
-    @PutMapping
+    @PutMapping("{/idVeterinario}")
     public Veterinario actualizarVeterinario (@RequestBody Veterinario veterinario, @PathVariable int idVeterinario){
         Veterinario veterinarioActual =objVeterinarioService.buscarVeterinarioPorId(idVeterinario);
         Veterinario veterinarioNuevo =null;
@@ -47,7 +47,4 @@ public class VeterinarioRestController {
         veterinarioNuevo = objVeterinarioService.crearVeterinario(veterinarioActual);
         return veterinarioNuevo;
     }
-
-
-
 }
