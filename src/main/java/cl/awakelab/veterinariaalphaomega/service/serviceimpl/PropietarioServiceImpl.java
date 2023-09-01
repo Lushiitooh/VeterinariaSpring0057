@@ -11,6 +11,7 @@ import java.util.List;
 
 @Service("propietarioServiceImpl")
 public class PropietarioServiceImpl implements IPropietarioService {
+
     @Autowired
     IPropietarioRepository objPropietarioRepo;
 
@@ -34,7 +35,7 @@ public class PropietarioServiceImpl implements IPropietarioService {
 
     @Override
     public void eliminarPropietario(int id) {
-
+        objPropietarioRepo.deleteById(id);
     }
 
     @Override

@@ -3,6 +3,7 @@ package cl.awakelab.veterinariaalphaomega.restcontroller;
 import cl.awakelab.veterinariaalphaomega.entity.Usuario;
 import cl.awakelab.veterinariaalphaomega.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,22 @@ public class UsuarioRestController {
     @GetMapping
     public List<Usuario> listarUsuario(){
         return objUsuarioService.listarUsuarios();
+    }
+    @PutMapping("/{id}")
+    public Usuario actualizarUsuario(@RequestBody Usuario usuario, @PathVariable int id){
+        Usuario usuarioActual = objUsuarioService.buscarUsuarioPorId(id);
+        //Usuario usuarioNuevo = null;
+
+        usuarioActual.setNombreUsuario(usuario.getNombreUsuario());
+        usuarioActual.setContrasena(usuario.getContrasena());
+        //usuarioNuevo = objUsuarioService.crearUsuario(usuarioActual);
+        //return usuarioNuevo;
+        return objUsuarioService.actualizarUsuario(usuarioActual.getId());
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> eliminarUsuario(@PathVariable int id){
+        objUsuarioService.eliminarUsuario(id);
+        return ResponseEntity.ok("Usuario eliminado exitosamente");
     }
     @GetMapping("/{id}")
     public Usuario listarUsuarioId(@PathVariable int id){

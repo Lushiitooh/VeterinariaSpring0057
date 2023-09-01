@@ -21,22 +21,18 @@ public class UsuarioServiceImpl implements IUsuarioService {
     public Usuario actualizarUsuario(int id) {
         return null;
     }
-
     @Override
     public List<Usuario> listarUsuarios() {
         return usuarioRepository.findAll();
     }
-
     @Override
     public void eliminarUsuario(int id) {
         usuarioRepository.deleteById(id);
     }
-
     @Override
     public Usuario listarUsuarioId(int id) {
         return null;
     }
-
     @Override
     public Usuario buscarUsuarioPorId(Integer id) {
         return usuarioRepository.findById(id).orElse(null);
