@@ -26,7 +26,6 @@ public class UsuarioRestController {
         Usuario usuarioNuevo = null;
 
         usuarioActual.setNombreUsuario(usuario.getNombreUsuario());
-        usuarioActual.setVeterinario(usuario.getVeterinario());
         usuarioActual.setContrasena(usuario.getContrasena());
         usuarioNuevo = objUsuarioService.crearUsuario(usuarioActual);
         return usuarioNuevo;
