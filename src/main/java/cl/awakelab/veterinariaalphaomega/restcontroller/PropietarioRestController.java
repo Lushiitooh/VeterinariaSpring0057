@@ -21,11 +21,20 @@ public class PropietarioRestController {
         return objPropietarioService.crearPropietario(propietario);
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public List<Propietario> listarPropietario(){ return objPropietarioService.listarPropietarios();}
 
+    @GetMapping("/{id}")
+    public Propietario buscarPropietarioId(@PathVariable int id){
+        return objPropietarioService.buscarPropietarioId(id);
+    }
     @PutMapping("/{id}")
     public Propietario actualizarPropietario(@RequestBody Propietario modificacionPropietario, @PathVariable int id){
-        Propietario antiguoPropietario = objPropietarioService.
+        return objPropietarioService.actualizarPropietario(id,modificacionPropietario);
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminarPropietario(@PathVariable int id){
+        objPropietarioService.eliminarPropietario(id);
     }
 }

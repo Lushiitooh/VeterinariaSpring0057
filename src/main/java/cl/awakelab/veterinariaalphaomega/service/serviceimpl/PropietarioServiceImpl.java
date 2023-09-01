@@ -23,14 +23,13 @@ public class PropietarioServiceImpl implements IPropietarioService {
     }
 
     @Override
-    public Propietario actualizarPropietario(int id) {
-
-        return
+    public Propietario actualizarPropietario(int id, Propietario propietarioActualizado) {
+        return null;
     }
 
     @Override
     public List<Propietario> listarPropietarios() {
-        return null;
+        return objPropietarioRepo.findAll();
     }
 
     @Override
@@ -40,6 +39,6 @@ public class PropietarioServiceImpl implements IPropietarioService {
 
     @Override
     public Propietario buscarPropietarioId(int id) {
-        return null;
+        return objPropietarioRepo.findById(id).orElse(null);
     }
 }
