@@ -20,6 +20,20 @@ public class UsuarioRestController {
     public List<Usuario> listarUsuario(){
         return objUsuarioService.listarUsuarios();
     }
+    @PutMapping
+    public Usuario actualizarUsuario(@RequestBody Usuario usuario, @PathVariable int id){
+        Usuario usuarioActual = objUsuarioService.buscarUsuarioPorId(id);
+        Usuario usuarioNuevo = null;
+
+        usuarioActual.setNombreUsuario(usuario.getNombreUsuario());
+        usuarioActual.setContrasena(usuario.getContrasena());
+        usuarioNuevo = objUsuarioService.crearUsuario(usuarioActual);
+        return usuarioNuevo;
+    }
+    @DeleteMapping
+    public void eliminarUsuario(@RequestBody int id){
+        objUsuarioService.eliminarUsuario(id);
+    }
     @GetMapping("/{id}")
     public Usuario listarUsuarioId(@PathVariable int id){
         return objUsuarioService.listarUsuarioId(id);
