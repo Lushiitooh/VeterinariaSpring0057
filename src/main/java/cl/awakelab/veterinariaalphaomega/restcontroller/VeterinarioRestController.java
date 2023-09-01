@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/usuario")
+@RequestMapping("api/veterinario")
 public class VeterinarioRestController {
     @Autowired
     IVeterinarioService objVeterinarioService;
@@ -35,16 +35,17 @@ public class VeterinarioRestController {
         objVeterinarioService.eliminarVeterinario(idVeterinario);
     }
 
-    @PutMapping("{/idVeterinario}")
-    public Veterinario actualizarVeterinario (@RequestBody Veterinario veterinario, @PathVariable int idVeterinario){
-        Veterinario veterinarioActual =objVeterinarioService.buscarVeterinarioPorId(idVeterinario);
-        Veterinario veterinarioNuevo =null;
+    @PutMapping("/{id}")
+    public Veterinario actualizarVeterinario (@RequestBody Veterinario veterinario, @PathVariable int id){
+        Veterinario veterinarioActual =objVeterinarioService.buscarVeterinarioPorId(id);
+        //Veterinario veterinarioNuevo =null;
 
         veterinarioActual.setNombres(veterinario.getNombres());
         veterinarioActual.setApellido1(veterinario.getApellido1());
         veterinarioActual.setApellido2(veterinario.getApellido2());
         veterinarioActual.setEspecialidad(veterinario.getEspecialidad());
-        veterinarioNuevo = objVeterinarioService.crearVeterinario(veterinarioActual);
-        return veterinarioNuevo;
+        //veterinarioNuevo = objVeterinarioService.crearVeterinario(veterinarioActual);
+        //return veterinarioNuevo;
+        return objVeterinarioService.actualizarVeterinario(veterinarioActual.getId());
     }
 }
