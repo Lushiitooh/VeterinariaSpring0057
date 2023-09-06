@@ -2,11 +2,14 @@ package cl.awakelab.veterinariaalphaomega.controller;
 
 import cl.awakelab.veterinariaalphaomega.entity.Mascota;
 import cl.awakelab.veterinariaalphaomega.entity.Usuario;
+import cl.awakelab.veterinariaalphaomega.service.IMascotaService;
 import cl.awakelab.veterinariaalphaomega.service.serviceimpl.MascotaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,12 +17,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RestController
-@RequestMapping("/api/v1")
+@Controller
+@RequestMapping("/api/mascota")
 public class MascotaController {
 
-    @Autowired
-    private MascotaServiceImpl mascotaService;
+   /* @Autowired
+    private MascotaServiceImpl mascotaService;*/
 
 
     /* Estructura del JSON
@@ -62,7 +65,7 @@ public class MascotaController {
             }
        }
     * */
-    @RequestMapping(value = "/mascota", method = RequestMethod.POST)
+   /* @RequestMapping(value = "/mascota", method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody Mascota mascota, BindingResult result) {
         Mascota nuevaMascota = null;
         Map<String, Object> response = new HashMap<>();
@@ -163,5 +166,15 @@ public class MascotaController {
         }
         response.put("mensaje", "la mascota fue eliminada con exito!");
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }*/
+
+    @Autowired
+    IMascotaService objMascotaService;
+
+    @GetMapping
+    public String listarMascota(Model model){
+        List<Mascota> listaMascotas = objMascotaService.listarMascota();
+        model.addAttribute("atributoListaMascotas", listaMascotas);
+        return "templateListarMascotas";
     }
 }

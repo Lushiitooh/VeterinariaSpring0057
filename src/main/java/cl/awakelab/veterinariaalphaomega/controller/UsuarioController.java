@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,11 +15,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RestController
-@RequestMapping("/api/v1")
+@Controller
+@RequestMapping("/api/usuario")
 public class UsuarioController {
 
-    @Autowired
+  /*  @Autowired
     private IUsuarioService usuarioService;
 
     /* Estructura del JSON
@@ -26,7 +28,7 @@ public class UsuarioController {
     "       contrasena": ""
         }
     * */
-    @RequestMapping(value = "/usuario", method = RequestMethod.POST)
+  /*  @RequestMapping(value = "/usuario", method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody Usuario usuario, BindingResult result) {
         Usuario nuevoUsuario = null;
         Map<String, Object> response = new HashMap<>();
@@ -123,5 +125,14 @@ public class UsuarioController {
         }
         response.put("mensaje", "El usuario fue eliminado con exito!");
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }*/
+    @Autowired
+    IUsuarioService objUsuarioService;
+
+    @GetMapping
+    public String listarUsuario(Model model){
+        List<Usuario> listaUsuarios = objUsuarioService.listarUsuarios();
+        model.addAttribute("atributoListaUsuarios", listaUsuarios);
+        return "templateListarUsuarios";
     }
 }
