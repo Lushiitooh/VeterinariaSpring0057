@@ -33,7 +33,7 @@ public class Propietario {
 
     @OneToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "FK_Usuario", nullable = false)
-    private Usuario nombreUsuario;
+    private Usuario usuarioPropietario;
     //todo averiguar como funciona One to One
 
     @OneToMany(mappedBy = "propietarioMascota", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)

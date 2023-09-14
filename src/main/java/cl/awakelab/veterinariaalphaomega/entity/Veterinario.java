@@ -34,10 +34,10 @@ public class Veterinario {
 
     @OneToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "FK_Usuario", nullable = false)
-    private Usuario nombreUsuario;
+    private Usuario usuarioVeterinario;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "listaVeterinarios", cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "veterinarioAsignado", cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     private List<Mascota> listaMascotas;
 
 //TODO muchos veterinarios pueden atender muchas mascotas
