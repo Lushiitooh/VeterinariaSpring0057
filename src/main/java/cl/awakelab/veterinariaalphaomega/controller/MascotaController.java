@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/api/mascota")
+@RequestMapping("mascota")
 public class MascotaController {
 
    /* @Autowired
