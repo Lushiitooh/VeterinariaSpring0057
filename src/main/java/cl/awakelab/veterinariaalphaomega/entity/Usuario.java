@@ -11,10 +11,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "Usuarios")
 public class Usuario {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "id",unique = true, nullable = false)
     private int id;
 
     @Column(name = "nombre_usuario", unique = true, length = 50)
@@ -22,6 +21,9 @@ public class Usuario {
 
     @Column(length = 30)
     private String contrasena;
+
+    @Column(length = 30)
+    private String rol;
 
     @OneToOne(mappedBy = "usuario",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Veterinario veterinario;

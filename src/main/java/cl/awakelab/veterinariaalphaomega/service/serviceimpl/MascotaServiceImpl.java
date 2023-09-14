@@ -6,33 +6,43 @@ import cl.awakelab.veterinariaalphaomega.service.IMascotaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 @Service("mascotaServiceImpl")
 public class MascotaServiceImpl implements IMascotaService {
-
     @Autowired
-    private IMascotaRepository mascotaRepository;
-
+    private IMascotaRepository objMascotaRepo;
     @Override
     public Mascota crearMascota(Mascota mascota) {
-        return mascotaRepository.save(mascota);
+        return objMascotaRepo.save(mascota);
     }
     @Override
     public List<Mascota> listarMascota() {
-        return mascotaRepository.findAll();
+        List<Mascota> listaMascota = new ArrayList<>();
+        listaMascota = objMascotaRepo.findAll();
+        return listaMascota;
     }
 
     @Override
     public Mascota listarMascotaPorId(int id) {
-        return mascotaRepository.findById(id).orElse(null);
+        return objMascotaRepo.findById(id).orElse(null);
     }
 
     @Override
-    public Mascota actualizarMascota(int id) {
-        return null;
+    public Mascota actualizarMascota(Mascota mascota) {
+        Mascota usuarioActualizado = new Mascota();
+        usuarioActualizado = objMascotaRepo.findById(mascota.getId()).orElse(null);
+        usuarioActualizado.setNombre(mascota.getNombre());
+        usuarioActualizado.setFechaNac(mascota.getFechaNac());
+        usuarioActualizado.setEspecie(mascota.getEspecie());
+        usuarioActualizado.setRaza(mascota.getRaza());
+        usuarioActualizado.setColor(mascota.getColor());
+        usuarioActualizado.setPropietarioMascota(mascota.getPropietarioMascota());
+        objMascotaRepo.save(usuarioActualizado);
+        return usuarioActualizado;
     }
     @Override
     public void eliminarMascota(int idMascota) {
-        mascotaRepository.deleteById(idMascota);
+        objMascotaRepo.deleteById(idMascota);
     }
 }

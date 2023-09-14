@@ -1,15 +1,18 @@
 package cl.awakelab.veterinariaalphaomega.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table (name = "veterinarios")
+@Table (name = "Veterinarios")
 
 public class Veterinario {
     @Id
@@ -31,7 +34,12 @@ public class Veterinario {
 
     @OneToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "FK_Usuario", nullable = false)
-    private Usuario usuario;
+    private Usuario nombreUsuario;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "listaVeterinarios", cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    private List<Mascota> listaMascotas;
+
 //TODO muchos veterinarios pueden atender muchas mascotas
 
 

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/propietario")
+@RequestMapping("/api/propietario")
 public class PropietarioRestController {
     @Autowired
     IPropietarioService objPropietarioService;

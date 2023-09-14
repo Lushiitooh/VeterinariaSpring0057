@@ -5,12 +5,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "mascotas")
-
+@Table(name = "Mascotas")
 public class Mascota {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,9 +32,13 @@ public class Mascota {
     @Column(length = 30)
     private String color;
 
-    @ManyToOne(optional = false,cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "propietario_id", referencedColumnName = "id")
+    @ManyToOne(optional = false,cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+    @JoinColumn(name = "propietario_id", referencedColumnName = "id", nullable = false)
     private Propietario propietarioMascota;
 
-
+    @ManyToOne(cascade = CascadeType.PERSIST,fetch = FetchType.EAGER)
+    @JoinTable(name = "Paciente_Veterinario",
+            joinColumns = @JoinColumn(name = "FK_Veterinario", nullable = false),
+            inverseJoinColumns = @JoinColumn(name = "FK_Paciente", nullable = false))
+    private Veterinario veterinarioAsignado;
 }

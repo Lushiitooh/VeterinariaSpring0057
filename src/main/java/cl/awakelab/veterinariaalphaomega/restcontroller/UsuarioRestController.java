@@ -30,7 +30,7 @@ public class UsuarioRestController {
         usuarioActual.setContrasena(usuario.getContrasena());
         //usuarioNuevo = objUsuarioService.crearUsuario(usuarioActual);
         //return usuarioNuevo;
-        return objUsuarioService.actualizarUsuario(usuarioActual.getId());
+        return objUsuarioService.actualizarUsuario(usuario);
     }
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminarUsuario(@PathVariable int id){

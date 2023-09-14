@@ -12,7 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name ="propietarios")
+@Table(name ="Propietarios")
 public class Propietario {
 
     @Id
@@ -31,13 +31,13 @@ public class Propietario {
     @Column(length = 50)
     private String correoElectronico;
 
-    @OneToOne(fetch = FetchType.EAGER)
+    @OneToOne(optional = false, fetch = FetchType.EAGER)
     @JoinColumn(name = "FK_Usuario", nullable = false)
-    private Usuario usuario;
+    private Usuario nombreUsuario;
     //todo averiguar como funciona One to One
 
-    @OneToMany(mappedBy = "propietarioMascota", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<Mascota> listaMascotas = new ArrayList<>();
+    @OneToMany(mappedBy = "propietarioMascota", fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    private List<Mascota> listaMascotas;
 
 
     }
