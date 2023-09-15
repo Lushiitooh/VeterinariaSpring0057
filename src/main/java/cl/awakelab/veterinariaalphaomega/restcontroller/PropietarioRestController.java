@@ -22,7 +22,9 @@ public class PropietarioRestController {
     }
 
     @GetMapping("/all")
-    public List<Propietario> listarPropietario(){ return objPropietarioService.listarPropietarios();}
+    public List<Propietario> listarPropietario(){
+        return objPropietarioService.listarPropietarios();
+    }
 
     @GetMapping("/{id}")
     public Propietario buscarPropietarioId(@PathVariable int id){
