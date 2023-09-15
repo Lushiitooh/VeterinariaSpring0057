@@ -64,9 +64,11 @@ public class MascotaController {
         }
 
         List<Veterinario> listarVeterinarios = objVeterinarioService.listarVeterinarios();
+        List<Propietario> listarPropietarios = objPropietarioService.listarPropietarios();
 
         model.addAttribute("mascota", mascota);
         model.addAttribute("listaVeterinarios", listarVeterinarios);
+        model.addAttribute("listaPropietarios", listarPropietarios);
         return "templateFormularioEditarMascota";
     }
     @PostMapping("/editarMascota/{id}")

@@ -45,20 +45,38 @@ public class MascotaServiceImpl implements IMascotaService {
 
     @Override
     public Mascota actualizarMascota(Mascota mascota) {
+
         Mascota mascotaActualizada = objMascotaRepo.findById(mascota.getId()).orElse(null);
 
         if (mascotaActualizada != null) {
-            // Actualizar los campos del profesor
+            // Actualizar los campos de la mascota existente
             mascotaActualizada.setNombre(mascota.getNombre());
             mascotaActualizada.setFechaNac(mascota.getFechaNac());
             mascotaActualizada.setEspecie(mascota.getEspecie());
             mascotaActualizada.setRaza(mascota.getRaza());
             mascotaActualizada.setColor(mascota.getColor());
-            // Actualizar la lista de cursos asignados (asumiendo que listaCursos es una lista de IDs)
-            mascotaActualizada.setPropietarioMascota(mascota.getPropietarioMascota());
-            mascotaActualizada.setVeterinarioAsignado(mascota.getVeterinarioAsignado());
 
-            // Guardar el profesor actualizado en la base de datos
+            // Verifica y establece propietarioMascota si no es nulo
+            if (mascota.getPropietarioMascota() != null) {
+                Propietario propietarioMascota = objPropietarioRepo.findById(mascota.getPropietarioMascota().getId()).orElse(null);
+                if (propietarioMascota != null) {
+                    mascotaActualizada.setPropietarioMascota(propietarioMascota);
+                } else {
+                    // Manejar el caso en el que el propietario no existe
+                }
+            }
+
+            // Verifica y establece veterinarioAsignado si no es nulo
+            if (mascota.getVeterinarioAsignado() != null) {
+                Veterinario vetAsignado = objVeterinarioRepo.findById(mascota.getVeterinarioAsignado().getId()).orElse(null);
+                if (vetAsignado != null) {
+                    mascotaActualizada.setVeterinarioAsignado(vetAsignado);
+                } else {
+                    // Manejar el caso en el que el veterinario no existe
+                }
+            }
+
+            // Guarda la mascota actualizada en la base de datos
             mascotaActualizada = objMascotaRepo.save(mascotaActualizada);
         }
 

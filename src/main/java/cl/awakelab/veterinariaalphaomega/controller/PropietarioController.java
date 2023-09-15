@@ -2,6 +2,7 @@ package cl.awakelab.veterinariaalphaomega.controller;
 
 import cl.awakelab.veterinariaalphaomega.entity.Propietario;
 import cl.awakelab.veterinariaalphaomega.entity.Usuario;
+import cl.awakelab.veterinariaalphaomega.service.IMascotaService;
 import cl.awakelab.veterinariaalphaomega.service.IPropietarioService;
 import cl.awakelab.veterinariaalphaomega.service.IUsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,8 @@ public class PropietarioController {
     IPropietarioService objPropietarioService;
     @Autowired
     IUsuarioService objUsuarioService;
+    @Autowired
+    IMascotaService objMascotaService;
     @GetMapping
     public String listarPropietario(Model model){
         List<Propietario> listaPropietarios = objPropietarioService.listarPropietarios();
