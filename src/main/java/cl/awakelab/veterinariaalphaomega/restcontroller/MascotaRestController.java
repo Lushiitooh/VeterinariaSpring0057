@@ -2,20 +2,27 @@ package cl.awakelab.veterinariaalphaomega.restcontroller;
 
 import cl.awakelab.veterinariaalphaomega.entity.Mascota;
 import cl.awakelab.veterinariaalphaomega.service.IMascotaService;
+import cl.awakelab.veterinariaalphaomega.service.IPropietarioService;
+import cl.awakelab.veterinariaalphaomega.service.IVeterinarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("api/mascota")
+@RequestMapping("/api/mascota")
 public class MascotaRestController {
     @Autowired
     IMascotaService objMascotaService;
-
+    @Autowired
+    IPropietarioService objPropietarioService;
+    @Autowired
+    IVeterinarioService objVeterinarioService;
     @PostMapping
     public Mascota crearMascota(@RequestBody Mascota mascota){
-        return  objMascotaService.crearMascota(mascota);
+        objMascotaService.crearMascota(mascota);
+        return mascota;
     }
 
     @GetMapping
@@ -28,22 +35,14 @@ public class MascotaRestController {
         return objMascotaService.listarMascotaPorId(id);
     }
 
-    @PutMapping("/{id}")
-    public Mascota actualizarMascota(@RequestBody Mascota mascota, @PathVariable int id){
-        Mascota mascotaActual = objMascotaService.listarMascotaPorId(id);
-        Mascota mascotaNueva = null;
-
-        mascotaActual.setNombre(mascota.getNombre());
-        mascotaActual.setFechaNac(mascota.getFechaNac());
-        mascotaActual.setEspecie(mascota.getEspecie());
-        mascotaActual.setRaza(mascota.getRaza());
-        mascotaActual.setColor(mascota.getColor());
-        mascotaNueva = objMascotaService.crearMascota(mascotaActual);
-        return mascotaNueva;
+    @PutMapping
+    public Mascota actualizarProfesor(@RequestBody Mascota mascota){
+        return  objMascotaService.actualizarMascota(mascota);
     }
-    @DeleteMapping("/{idMascota}")
-    public void eliminarMascota(@PathVariable int idMascota){
-        objMascotaService.eliminarMascota(idMascota);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> eliminarProfesor(@PathVariable int id){
+        objMascotaService.eliminarMascota(id);
+        return ResponseEntity.ok("Mascota eliminado exitosamente");
     }
 
 }

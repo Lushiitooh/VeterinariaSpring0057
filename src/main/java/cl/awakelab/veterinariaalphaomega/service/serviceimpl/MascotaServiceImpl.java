@@ -38,7 +38,6 @@ public class MascotaServiceImpl implements IMascotaService {
         listaMascota = objMascotaRepo.findAll();
         return listaMascota;
     }
-
     @Override
     public Mascota listarMascotaPorId(int idMascota) {
         return objMascotaRepo.findById(idMascota).orElse(null);
@@ -46,16 +45,17 @@ public class MascotaServiceImpl implements IMascotaService {
 
     @Override
     public Mascota actualizarMascota(Mascota mascota) {
-        Mascota usuarioActualizado = new Mascota();
-        usuarioActualizado = objMascotaRepo.findById(mascota.getId()).orElse(null);
-        usuarioActualizado.setNombre(mascota.getNombre());
-        usuarioActualizado.setFechaNac(mascota.getFechaNac());
-        usuarioActualizado.setEspecie(mascota.getEspecie());
-        usuarioActualizado.setRaza(mascota.getRaza());
-        usuarioActualizado.setColor(mascota.getColor());
-        usuarioActualizado.setPropietarioMascota(mascota.getPropietarioMascota());
-        objMascotaRepo.save(usuarioActualizado);
-        return usuarioActualizado;
+        Mascota mascotaActualizada = new Mascota();
+        mascotaActualizada = objMascotaRepo.findById(mascota.getId()).orElse(null);
+        mascotaActualizada.setNombre(mascota.getNombre());
+        mascotaActualizada.setFechaNac(mascota.getFechaNac());
+        mascotaActualizada.setEspecie(mascota.getEspecie());
+        mascotaActualizada.setRaza(mascota.getRaza());
+        mascotaActualizada.setColor(mascota.getColor());
+        mascotaActualizada.setPropietarioMascota(mascota.getPropietarioMascota());
+        mascotaActualizada.setVeterinarioAsignado(mascota.getVeterinarioAsignado());
+        mascotaActualizada = objMascotaRepo.save(mascotaActualizada);
+        return mascotaActualizada;
     }
     @Override
     public void eliminarMascota(int idMascota) {

@@ -9,36 +9,37 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/usuario")
+@RequestMapping("/api/usuario")
 public class UsuarioRestController {
     @Autowired
     IUsuarioService objUsuarioService;
+
     @PostMapping
     public Usuario crearUsuario(@RequestBody Usuario usuario){
+
         return objUsuarioService.crearUsuario(usuario);
     }
+
     @GetMapping
     public List<Usuario> listarUsuario(){
+
         return objUsuarioService.listarUsuarios();
     }
-    @PutMapping("/{id}")
-    public Usuario actualizarUsuario(@RequestBody Usuario usuario, @PathVariable int id){
-        Usuario usuarioActual = objUsuarioService.buscarUsuarioPorId(id);
-        //Usuario usuarioNuevo = null;
 
-        usuarioActual.setNombreUsuario(usuario.getNombreUsuario());
-        usuarioActual.setContrasena(usuario.getContrasena());
-        //usuarioNuevo = objUsuarioService.crearUsuario(usuarioActual);
-        //return usuarioNuevo;
+    @GetMapping("/{id}")
+    public Usuario listarUsuarioId(@PathVariable int id) {
+
+        return objUsuarioService.listarUsuarioId(id);
+    }
+
+    @PutMapping
+    public  Usuario actualizarUsuario(@RequestBody Usuario usuario){
         return objUsuarioService.actualizarUsuario(usuario);
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> eliminarUsuario(@PathVariable int id){
         objUsuarioService.eliminarUsuario(id);
         return ResponseEntity.ok("Usuario eliminado exitosamente");
-    }
-    @GetMapping("/{id}")
-    public Usuario listarUsuarioId(@PathVariable int id){
-        return objUsuarioService.listarUsuarioId(id);
     }
 }
