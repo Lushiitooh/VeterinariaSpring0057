@@ -16,13 +16,11 @@ public class UsuarioRestController {
 
     @PostMapping
     public Usuario crearUsuario(@RequestBody Usuario usuario){
-
         return objUsuarioService.crearUsuario(usuario);
     }
 
     @GetMapping
-    public List<Usuario> listarUsuario(){
-
+    public List<Usuario> listarUsuarios(){
         return objUsuarioService.listarUsuarios();
     }
 

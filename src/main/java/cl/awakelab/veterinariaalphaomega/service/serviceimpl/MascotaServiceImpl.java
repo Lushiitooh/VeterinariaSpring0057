@@ -45,16 +45,23 @@ public class MascotaServiceImpl implements IMascotaService {
 
     @Override
     public Mascota actualizarMascota(Mascota mascota) {
-        Mascota mascotaActualizada = new Mascota();
-        mascotaActualizada = objMascotaRepo.findById(mascota.getId()).orElse(null);
-        mascotaActualizada.setNombre(mascota.getNombre());
-        mascotaActualizada.setFechaNac(mascota.getFechaNac());
-        mascotaActualizada.setEspecie(mascota.getEspecie());
-        mascotaActualizada.setRaza(mascota.getRaza());
-        mascotaActualizada.setColor(mascota.getColor());
-        mascotaActualizada.setPropietarioMascota(mascota.getPropietarioMascota());
-        mascotaActualizada.setVeterinarioAsignado(mascota.getVeterinarioAsignado());
-        mascotaActualizada = objMascotaRepo.save(mascotaActualizada);
+        Mascota mascotaActualizada = objMascotaRepo.findById(mascota.getId()).orElse(null);
+
+        if (mascotaActualizada != null) {
+            // Actualizar los campos del profesor
+            mascotaActualizada.setNombre(mascota.getNombre());
+            mascotaActualizada.setFechaNac(mascota.getFechaNac());
+            mascotaActualizada.setEspecie(mascota.getEspecie());
+            mascotaActualizada.setRaza(mascota.getRaza());
+            mascotaActualizada.setColor(mascota.getColor());
+            // Actualizar la lista de cursos asignados (asumiendo que listaCursos es una lista de IDs)
+            mascotaActualizada.setPropietarioMascota(mascota.getPropietarioMascota());
+            mascotaActualizada.setVeterinarioAsignado(mascota.getVeterinarioAsignado());
+
+            // Guardar el profesor actualizado en la base de datos
+            mascotaActualizada = objMascotaRepo.save(mascotaActualizada);
+        }
+
         return mascotaActualizada;
     }
     @Override

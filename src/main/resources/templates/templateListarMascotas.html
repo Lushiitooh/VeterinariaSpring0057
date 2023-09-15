@@ -26,17 +26,19 @@
             <th>COLOR</th>
             <th>PROPIETARIO</th>
             <th>VETERINARIO ASIGNADO</th>
+            <th>EDITAR / ELIMINAR</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="mascota: ${atributoListaMascotas}">
             <td th:text="${mascota.id}"></td>
+            <td th:text="${mascota.nombre}"></td>
             <td th:text="${mascota.fechaNac}"></td>
             <td th:text="${mascota.especie}"></td>
             <td th:text="${mascota.raza}"></td>
             <td th:text="${mascota.color}"></td>
-            <td th:text="${mascota.propietarioMascota.nombre.apellido}"></td>
-            <td th:text="${mascota.veterinarioAsignado.nombres.apellido1}"></td>
+            <td th:text="${mascota.propietarioMascota.nombre + ' ' + mascota.propietarioMascota.apellido}"></td>
+            <td th:text="${mascota.veterinarioAsignado.nombres + ' ' + mascota.veterinarioAsignado.apellido1}"></td>
             <td>
                 <div class="btn-group">
                         <form th:action="@{/mascota/editarMascota/{id}(id=${mascota.id})}"

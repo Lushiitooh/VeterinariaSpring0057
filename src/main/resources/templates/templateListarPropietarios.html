@@ -20,9 +20,10 @@
     <tr>
       <th>ID</th>
       <th>NOMBRE</th>
-      <th>APELLIDO PATERNO </th>
+      <th>APELLIDO PATERNO</th>
       <th>TELEFONO</th>
       <th>CORREO ELECTRONICO</th>
+      <th>MASCOTAS</th>
       <th>EDITAR / ELIMINAR</th>
     </tr>
     </thead>
@@ -33,6 +34,7 @@
       <td th:text="${propietario.apellido}"></td>
       <td th:text="${propietario.telefono}"></td>
       <td th:text="${propietario.correoElectronico}"></td>
+      <td th:each="mascota: ${propietario.listaMascotas}" th:text="${mascota.nombre}"></td>
       <td>
         <div class="btn-group">
           <form th:action="@{/propietario/editarPropietario/{id}(id=${propietario.id})}"

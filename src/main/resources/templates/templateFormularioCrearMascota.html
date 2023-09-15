@@ -44,13 +44,13 @@
         <div>
             <label for="propietarioMascota" class="form-label"> Propietario:</label>
             <select class="form-control" id="propietarioMascota" name="propietarioMascota" required>
-                <option th:each="propietario : ${listaPropietarios}" th:value="${propietario.id}" th:text="${propietario.nombre+ ' ' +propietario.apellido}"></option>
+                <option th:each="propietario : ${listaPropietarios}" th:value="${propietario.id}" th:text="${propietario.nombre + ' ' + propietario.apellido}"></option>
             </select>
         </div>
         <div>
             <label for="veterinarioAsignado" class="form-label"> Veterinario Asignado:</label>
             <select class="form-control" id="veterinarioAsignado" name="veterinarioAsignado" required>
-                <option th:each="veterinario : ${listaVeterinarios}" th:value="${veterinario.id}" th:text="${veterinario.nombres+ ' ' +propietario.apellido1+ ' ' +propietario.apellido2}"></option>
+                <option th:each="veterinario : ${listaVeterinarios}" th:value="${veterinario.id}" th:text="${veterinario.nombres + ' ' + veterinario.apellido1 + ' ' + veterinario.apellido2}"></option>
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Crear Mascota</button>

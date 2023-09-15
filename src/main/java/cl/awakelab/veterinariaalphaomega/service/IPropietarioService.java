@@ -9,6 +9,6 @@ public interface IPropietarioService {
     public Propietario actualizarPropietario(int id, Propietario propietario);
     public List<Propietario> listarPropietarios();
     public void eliminarPropietario(int id);
-    public Propietario buscarPropietarioId(int id);
+    public Propietario listarPropietarioId(int id);
 
 }

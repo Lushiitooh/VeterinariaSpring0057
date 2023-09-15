@@ -13,10 +13,9 @@ import java.util.List;
 public class UsuarioServiceImpl implements IUsuarioService {
     @Autowired
     IUsuarioRepository objUsuarioRepo;
-    private IUsuarioRepository usuarioRepository;
     @Override
     public Usuario crearUsuario(Usuario nuevoUsuario) {
-        return usuarioRepository.save(nuevoUsuario);
+        return objUsuarioRepo.save(nuevoUsuario);
     }
 
     @Override
@@ -26,25 +25,29 @@ public class UsuarioServiceImpl implements IUsuarioService {
         usuarioActualizado.setNombreUsuario(usuario.getNombreUsuario());
         usuarioActualizado.setRol(usuario.getRol());
         usuarioActualizado.setContrasena(usuario.getContrasena());
-        objUsuarioRepo.save(usuarioActualizado);
+        usuarioActualizado = objUsuarioRepo.save(usuarioActualizado);
         return usuarioActualizado;
     }
+
     @Override
     public List<Usuario> listarUsuarios() {
         List<Usuario> listaUsuarios = new ArrayList<>();
-        listaUsuarios= objUsuarioRepo.findAll();
+        listaUsuarios = objUsuarioRepo.findAll();
         return listaUsuarios;
     }
+
+    @Override
+    public Usuario buscarUsuarioPorId(Integer id) {
+        return null;
+    }
+
     @Override
     public void eliminarUsuario(int id) {
-        usuarioRepository.deleteById(id);
+        objUsuarioRepo.deleteById(id);
     }
+
     @Override
     public Usuario listarUsuarioId(int id) {
         return objUsuarioRepo.findById(id).orElse(null);
-    }
-    @Override
-    public Usuario buscarUsuarioPorId(Integer id) {
-        return usuarioRepository.findById(id).orElse(null);
     }
 }

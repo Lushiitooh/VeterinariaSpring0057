@@ -41,7 +41,7 @@ public class MascotaController {
         List<Propietario> listaPropietarios = objPropietarioService.listarPropietarios();
         List<Veterinario> listaVeterinarios = objVeterinarioService.listarVeterinarios();
         model.addAttribute("listaPropietarios", listaPropietarios);
-        model.addAttribute("listaPropietarios", listaVeterinarios);
+        model.addAttribute("listaVeterinarios", listaVeterinarios);
         return  "templateFormularioCrearMascota";
     }
     @PostMapping("/crearMascota")
@@ -71,9 +71,9 @@ public class MascotaController {
     }
     @PostMapping("/editarMascota/{id}")
     public String actualizarMascota(@PathVariable int id, @ModelAttribute Mascota mascota) {
-        // Lógica para actualizar la mascota en la base de datos
+        // Lógica para actualizar el alumno en la base de datos
         objMascotaService.actualizarMascota(mascota);
-        // Redirecciona a la página de lista de mascotas o a donde desees después de la edición
+        // Redirecciona a la página de lista de alumnos o a donde desees después de la edición
         return "redirect:/mascota";
     }
 

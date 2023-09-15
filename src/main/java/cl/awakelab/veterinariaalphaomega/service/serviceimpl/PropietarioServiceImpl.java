@@ -39,7 +39,7 @@ public class PropietarioServiceImpl implements IPropietarioService {
         objPropietarioRepo.deleteById(id);
     }
     @Override
-    public Propietario buscarPropietarioId(int id) {
+    public Propietario listarPropietarioId(int id) {
         return objPropietarioRepo.findById(id).orElse(null);
     }
 }

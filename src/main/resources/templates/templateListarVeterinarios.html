@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!--Compatibilidad con Internet Explorer-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--Para el Responsive en diferentes dispositivos-->
-    <title>Listar Profesores</title> <!--Título página WEB-->
+    <title>Listar Veterinarios</title> <!--Título página WEB-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 </head>
@@ -22,7 +22,8 @@
             <th>NOMBRE</th>
             <th>APELLIDO PATERNO</th>
             <th>APELLIDO MATERNO</th>
-            <th>ESPECIALIDAD </th>
+            <th>ESPECIALIDAD</th>
+            <th>PACIENTES</th>
             <th>EDITAR / ELIMINAR</th>
         </tr>
         </thead>
@@ -33,6 +34,7 @@
             <td th:text="${veterinario.apellido1}"></td>
             <td th:text="${veterinario.apellido2}"></td>
             <td th:text="${veterinario.especialidad}"></td>
+            <td th:each="mascota: ${veterinario.listaMascotas}" th:text="${mascota.nombre}"></td>
             <td>
                 <div class="btn-group">
                     <form th:action="@{/veterinario/editarVeterinario/{id}(id=${veterinario.id})}"
