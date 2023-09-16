@@ -33,7 +33,7 @@ public class Veterinario {
     private String especialidad;
 
     @JsonIgnore
-    @OneToOne(optional = false, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToOne(optional = false, cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
     @JoinColumn(name = "FK_Usuario", nullable = false)
     private Usuario usuarioVeterinario;
 

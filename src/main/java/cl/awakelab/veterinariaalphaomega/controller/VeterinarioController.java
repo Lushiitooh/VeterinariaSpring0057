@@ -54,5 +54,10 @@ public class VeterinarioController {
         // Redirecciona a la página de lista de veterinarios o a donde desees después de la edición
         return "redirect:/veterinario";
     }
+    @PostMapping("/eliminarVeterinario/{id}")
+    public String eliminarVeterinario(@PathVariable int id){
+        objVeterinarioService.eliminarVeterinario(id);
+        return "redirect:/veterinario";
+    }
 
 }

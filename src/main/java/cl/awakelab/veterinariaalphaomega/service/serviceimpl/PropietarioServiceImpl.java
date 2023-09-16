@@ -18,14 +18,18 @@ public class PropietarioServiceImpl implements IPropietarioService {
         return objPropietarioRepo.save(nuevoPropietario);
     }
     @Override
-    public Propietario actualizarPropietario(int id, Propietario propietario) {
-        Propietario propietarioActualizado = new Propietario();
-        propietarioActualizado = objPropietarioRepo.findById(propietarioActualizado.getId()).orElse(null);
-        propietarioActualizado.setNombre(propietarioActualizado.getNombre());
-        propietarioActualizado.setApellido(propietarioActualizado.getApellido());
-        propietarioActualizado.setTelefono(propietarioActualizado.getTelefono());
-        propietarioActualizado.setCorreoElectronico(propietarioActualizado.getCorreoElectronico());
-        objPropietarioRepo.save(propietarioActualizado);
+    public Propietario actualizarPropietario(Propietario propietario) {
+        Propietario propietarioActualizado = objPropietarioRepo.findById(propietario.getId()).orElse(null);
+
+        if (propietarioActualizado != null) {
+            propietarioActualizado.setNombre(propietario.getNombre());
+            propietarioActualizado.setApellido(propietario.getApellido());
+            propietarioActualizado.setTelefono(propietario.getTelefono());
+            propietarioActualizado.setCorreoElectronico(propietario.getCorreoElectronico());
+            propietarioActualizado = objPropietarioRepo.save(propietarioActualizado);
+
+        }
+
         return propietarioActualizado;
     }
     @Override

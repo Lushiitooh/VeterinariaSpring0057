@@ -5,6 +5,7 @@ import cl.awakelab.veterinariaalphaomega.entity.Usuario;
 import cl.awakelab.veterinariaalphaomega.entity.Veterinario;
 import cl.awakelab.veterinariaalphaomega.service.IVeterinarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,8 +32,9 @@ public class VeterinarioRestController {
     }
 
     @DeleteMapping("/{id}")
-    public void eliminarVeterinario (@RequestBody int idVeterinario){
-        objVeterinarioService.eliminarVeterinario(idVeterinario);
+    public ResponseEntity<String> eliminarVeterinario(@PathVariable int id){
+        objVeterinarioService.eliminarVeterinario(id);
+        return ResponseEntity.ok("Veterinario eliminado exitosamente");
     }
 
     @PutMapping("/{id}")

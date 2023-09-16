@@ -30,9 +30,9 @@ public class PropietarioRestController {
     public Propietario listarPropietarioId(@PathVariable int id){
         return objPropietarioService.listarPropietarioId(id);
     }
-    @PutMapping("/{id}")
-    public Propietario actualizarPropietario(@RequestBody Propietario modificacionPropietario, @PathVariable int id){
-        return objPropietarioService.actualizarPropietario(id,modificacionPropietario);
+    @PutMapping
+    public Propietario actualizarPropietario(@RequestBody Propietario modificacionPropietario){
+        return objPropietarioService.actualizarPropietario(modificacionPropietario);
     }
 
     @DeleteMapping("/{id}")

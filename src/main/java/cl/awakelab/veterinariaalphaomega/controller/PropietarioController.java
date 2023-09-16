@@ -54,7 +54,7 @@ public class PropietarioController {
     @PostMapping("/editarPropietario/{id}")
     public String actualizarPropietario(@PathVariable int id, @ModelAttribute Propietario propietario) {
         // Lógica para actualizar el propietario en la base de datos
-        objPropietarioService.actualizarPropietario(id, propietario);
+        objPropietarioService.actualizarPropietario(propietario);
         // Redirecciona a la página de lista de propietarios o a donde desees después de la edición
         return "redirect:/propietario";
     }

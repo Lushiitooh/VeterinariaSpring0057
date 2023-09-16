@@ -42,8 +42,8 @@ public class UsuarioServiceImpl implements IUsuarioService {
     }
 
     @Override
-    public void eliminarUsuario(int id) {
-        objUsuarioRepo.deleteById(id);
+    public void eliminarUsuario(int idUsuario) {
+        objUsuarioRepo.deleteById(idUsuario);
     }
 
     @Override

@@ -36,11 +36,11 @@ public class MascotaRestController {
     }
 
     @PutMapping
-    public Mascota actualizarProfesor(@RequestBody Mascota mascota){
+    public Mascota actualizarMascota(@RequestBody Mascota mascota){
         return  objMascotaService.actualizarMascota(mascota);
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminarProfesor(@PathVariable int id){
+    public ResponseEntity<String> eliminarMascota(@PathVariable int id){
         objMascotaService.eliminarMascota(id);
         return ResponseEntity.ok("Mascota eliminado exitosamente");
     }
